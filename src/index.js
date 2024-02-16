@@ -25,7 +25,7 @@ if(extension != 'sb3'){
 }
 
 
-async function processSb3File(filePath) {
+export async function processSb3File(filePath) {
     try {
       const unzippedFilePath = await unzipSb3(filePath);
       const parser = new Parser();
