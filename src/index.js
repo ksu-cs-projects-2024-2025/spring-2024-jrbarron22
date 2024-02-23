@@ -37,6 +37,7 @@ export async function processSb3File(filePath) {
       // Handle errors that may occur during unzip or parse
       console.error(error);
     }
+    return astRootNode;
   }
   
   // Call the function with your filePath
