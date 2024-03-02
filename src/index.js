@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
- 
 import { unzipSb3 } from './utils/sb3Unzipp.js';
 import { Parser } from './utils/parser.js';
 import { countBlockTypes, countBlocksByOpcode, countCharacters, seeCustomChanges /* findOrphans */ } from './count.js';
 import { checkRepeatExists, checkIncorrectRepeatUsage } from './linter/repeat.js';
 import { orphanSort } from './orphans.js';
 
+/*
 // Grab the file path from command-line arguments
 const filePath = process.argv[2]; 
 
@@ -23,25 +23,33 @@ if(extension != 'sb3'){
     console.log("Incorrect File Extention: " + extension);
     process.exit(1);
 }
-
+*/
 
 export async function processSb3File(filePath) {
+    //console.log("Got here\n");
     try {
       const unzippedFilePath = await unzipSb3(filePath);
       const parser = new Parser();
       const astRootNode = await parser.parse(unzippedFilePath);
       const allTargets = astRootNode.findAllNodes(node => node.type === 'Target');
   
-      console.log(allTargets);
+      //console.log(allTargets); //Eventually Remove
+
+      //return astRootNode;
+      
+      return { //returns object of ast with functions that it can utilize
+        ast:astRootNode,
+        getOrphans:()=>orphanSort(astRootNode)
+      };
+      
     } catch (error) {
       // Handle errors that may occur during unzip or parse
       console.error(error);
     }
-    return astRootNode;
   }
   
   // Call the function with your filePath
-  processSb3File(filePath);
+  //processSb3File(filePath);
   
 
 // unzipSb3(filePath)

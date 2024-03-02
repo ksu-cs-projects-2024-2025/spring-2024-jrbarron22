@@ -1,9 +1,15 @@
 import { processSb3File } from "../src/index.js";
-import { orphanSort } from "../src/orphans.js";
+//import { orphanSort } from "../src/orphans.js";
 
 console.log("Start of Program");
 
-var fileName = "./testScratchModule.sb3";
+var fileName = "./testMusicModule.sb3";
 
-var ast = processSb3File(fileName);
-orphanSort(ast);
+var project = await processSb3File(fileName);
+console.log('project', project);
+console.log('orphans', project.getOrphans());
+//console.log(ast);
+//orphanSort(ast);
+//console.log(blocks);
+//console.log("Number of Orphans: %d\n", blocks[0]);
+//console.log("Number of non-Orphans: %d\n", blocks[1]);

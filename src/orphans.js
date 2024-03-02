@@ -21,12 +21,14 @@ export function orphanSort(ast) {
         node.children.forEach(child => processNode(child));
     }
 
+    //Josh: tweak this later to not hard code the hat blocks
     function isStartingBlock(opcode) {
         return ['event_whenflagclicked', 'event_whenkeypressed', 'event_whenstageclicked', 
                 'event_whenbackdropswitchesto', 'event_whengreaterthan', 'event_whenbroadcastreceived']
                .includes(opcode);
     }
 
+    console.log("Start of orphan sort");
     // Traverse the AST from the root
     ast.root.children.forEach(target => target.children.forEach(processNode));
 
