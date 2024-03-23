@@ -1,7 +1,11 @@
-class chord{
-    constructor(startTime, duration, notes){
+export class chord{
+    constructor(startTime, notes){
         this.startTime = startTime;
-        this.duration = duration;
         this.notes = notes;
+        this.type = "chord";
+    }
+
+    addNote(note){
+        this.notes.append(note);
     }
 }

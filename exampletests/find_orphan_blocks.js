@@ -3,7 +3,7 @@ import { processSb3File } from "../src/index.js";
 
 console.log("Start of Program");
 
-var fileName = "./testMusicModule.sb3";
+var fileName = "./4-music.sb3";
 
 var project = await processSb3File(fileName);
 console.log('project', project);
