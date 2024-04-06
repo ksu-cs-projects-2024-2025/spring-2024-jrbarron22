@@ -3,11 +3,12 @@ import { processSb3File } from "../src/index.js";
 
 console.log("Start of Program");
 
-var fileName = "./4-music.sb3";
+var fileName = "./orphanTest1.sb3";
 
 var project = await processSb3File(fileName);
-console.log('project', project);
-console.log('orphans', project.getOrphans());
+project.getOrphans();
+//console.log('project', project);
+//console.log('orphans', project.getOrphans());
 //console.log(ast);
 //orphanSort(ast);
 //console.log(blocks);

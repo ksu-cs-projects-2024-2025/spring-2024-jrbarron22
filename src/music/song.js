@@ -1,13 +1,14 @@
-import { Note } from "./note.js";
-import { Rest } from "./rest.js";
-import { Chord } from "./chord.js";
+import  Note  from "./note.js";
+import  Rest  from "./rest.js";
+import  Chord  from "./chord.js";
 
-export class song{
+export default class song{
     constructor(ast){
+        this.processNode = this.processNode.bind(this);
         this.music = [];
         this.cur_time = 0;
         //Need to find correct target
-        ast.root.children.forEach(target => target.children.forEach(processNode));
+        ast.root.children.forEach(target => target.children.forEach(this.processNode));
         //Do depth first where all notes and rests are added to one big data structure
         //Sort at the end
         this.sortMusicByStartTime();
@@ -23,20 +24,23 @@ export class song{
         
         //If it is a play note for beats, then figure out what note it is and add it the number of beats times
         if(opcode.startsWith("music_playNoteForBeats")){
-            var note_length = node.data.input.beats[1][1];
-            var note_pitch = node.children[0].data.fields.note[0];
+            console.log(node.parent);
+            var note_length = node.data.inputs.BEATS[1][1];
+            var note_pitch = node.children[0].data.fields.NOTE[0];
             const note = new Note(this.cur_time, note_length, note_pitch);
 
             for(let i = 0; i < this.music.length; i++){
                 if(this.music[i].start_time == note.start_time){
                     if(this.music[i].type == "chord"){
                         this.music[i].addNote(note);
+                        break;
                     }
                     else if(this.music[i].type == "rest" || this.music[i].type == "note"){
                         const notes = [this.music[i], note];
                         const chord = new Chord(this.cur_time, notes);
                         this.music.push(chord);
                         note.isUsed = false;
+                        break;
                     }
                 }
             }
@@ -45,22 +49,25 @@ export class song{
         }
         //Same for rests
         else if(opcode.startsWith("music_restForBeats")){
-            var rest_length = node.data.input.beats[1][1];
+            var rest_length = node.data.inputs.BEATS[1][1];
             const rest = new Rest(rest_length);
 
             for(let i = 0; i < this.music.length; i++){
-                if(this.music[i].start_time == rest.start_time){
+                if(this.music[i].start_time == rest.startTime){
                     if(this.music[i].type == "chord"){
                         this.music[i].addNote(rest);
+                        break;
                     }
                     else if(this.music[i].type == "rest" || this.music[i].type == "note"){
                         const notes = [this.music[i], rest];
                         const chord = new Chord(this.cur_time, notes);
                         this.music.push(chord);
                         rest.isUsed = false;
+                        break;
                     }
                 }
             }
+
             if(rest.isUsed) this.music.push(rest);
             this.cur_time += rest_length;
         }
@@ -69,7 +76,7 @@ export class song{
         if(node.children.length < 1){
             this.cur_time = 0;
         } 
-        node.children.forEach(child => processNode(child));
+        node.children.forEach(child => this.processNode(child));
     }
 
     sortMusicByStartTime(){

@@ -1,0 +1,302 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 48000,
+                    "sampleCount": 1123,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "JAEikdh6zaXx*Ojf-9f]": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "iI7#V@xqa(@5hyT=9B@_",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 24,
+                    "y": 83
+                },
+                "x8#sKya]p+PmA-2r){|X": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "[1w!BAaRBzY2eBV9c~jE",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 393,
+                    "y": 62
+                },
+                "iI7#V@xqa(@5hyT=9B@_": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "sB*cM{c8T?C3yHY}?ykE",
+                    "parent": "JAEikdh6zaXx*Ojf-9f]",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            "_M5044fy-8,I/R%nfoKn"
+                        ],
+                        "BEATS": [
+                            1,
+                            [
+                                4,
+                                "0.25"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "_M5044fy-8,I/R%nfoKn": {
+                    "opcode": "note",
+                    "next": null,
+                    "parent": "iI7#V@xqa(@5hyT=9B@_",
+                    "inputs": {},
+                    "fields": {
+                        "NOTE": [
+                            "60",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "jDXWfb1@bSGQm{-|HEw/": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": null,
+                    "parent": "sB*cM{c8T?C3yHY}?ykE",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            "x3`tI(tBr+Y%ZWTHz]5!"
+                        ],
+                        "BEATS": [
+                            1,
+                            [
+                                4,
+                                "0.25"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "x3`tI(tBr+Y%ZWTHz]5!": {
+                    "opcode": "note",
+                    "next": null,
+                    "parent": "jDXWfb1@bSGQm{-|HEw/",
+                    "inputs": {},
+                    "fields": {
+                        "NOTE": [
+                            "60",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "sB*cM{c8T?C3yHY}?ykE": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "jDXWfb1@bSGQm{-|HEw/",
+                    "parent": "iI7#V@xqa(@5hyT=9B@_",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            "/sDV#wfwQIX/KxbXM_,i"
+                        ],
+                        "BEATS": [
+                            1,
+                            [
+                                4,
+                                "0.25"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "/sDV#wfwQIX/KxbXM_,i": {
+                    "opcode": "note",
+                    "next": null,
+                    "parent": "sB*cM{c8T?C3yHY}?ykE",
+                    "inputs": {},
+                    "fields": {
+                        "NOTE": [
+                            "60",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "[1w!BAaRBzY2eBV9c~jE": {
+                    "opcode": "music_restForBeats",
+                    "next": "}u5P!8JM(iH~(4/#RA?O",
+                    "parent": "x8#sKya]p+PmA-2r){|X",
+                    "inputs": {
+                        "BEATS": [
+                            1,
+                            [
+                                4,
+                                "0.25"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "}u5P!8JM(iH~(4/#RA?O": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "|%E=8plu_UG:~oTQQ[6v",
+                    "parent": "[1w!BAaRBzY2eBV9c~jE",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            "ic{%dOhU1{p{$_{3l#0%"
+                        ],
+                        "BEATS": [
+                            1,
+                            [
+                                4,
+                                "0.25"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "ic{%dOhU1{p{$_{3l#0%": {
+                    "opcode": "note",
+                    "next": null,
+                    "parent": "}u5P!8JM(iH~(4/#RA?O",
+                    "inputs": {},
+                    "fields": {
+                        "NOTE": [
+                            "60",
+                            null
+                        ]
+                    },
+                    "shadow": true,
+                    "topLevel": false
+                },
+                "|%E=8plu_UG:~oTQQ[6v": {
+                    "opcode": "music_restForBeats",
+                    "next": null,
+                    "parent": "}u5P!8JM(iH~(4/#RA?O",
+                    "inputs": {
+                        "BEATS": [
+                            1,
+                            [
+                                4,
+                                "0.25"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "bcf454acf82e4504149f7ffe07081dbc",
+                    "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
+                    "rotationCenterX": 48,
+                    "rotationCenterY": 50
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
+                    "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
+                    "rotationCenterX": 46,
+                    "rotationCenterY": 53
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 48000,
+                    "sampleCount": 40681,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [
+        "music"
+    ],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "2.3.0",
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+    }
+}

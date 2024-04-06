@@ -1,4 +1,4 @@
-export class rest{
+export default class rest{
     constructor(startTime, duration){
         this.startTime = startTime;
         this.duration = duration;

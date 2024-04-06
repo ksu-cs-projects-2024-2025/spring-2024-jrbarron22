@@ -1,4 +1,4 @@
-export class chord{
+export default class chord{
     constructor(startTime, notes){
         this.startTime = startTime;
         this.notes = notes;
