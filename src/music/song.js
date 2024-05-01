@@ -99,6 +99,34 @@ export default class song{
             return true;
         }
 
+        ///
+        //feedback is the array of feedback
+        //element is the note or chord
+        //type is which type of feedback to push
+        ///
+        function pushFeedback(feedback, element, type){
+            console.log(element);
+            switch(type){
+                //Wrong element type
+                case 1:
+                    feedback.push(element.type.concat(" expected at start time ", element.startTime));
+                    break;
+                //Incorrect note data
+                case 2:
+                    feedback.push("Expected note with Midi value: ".concat(element.noteMidi, " and duration: ", 
+                            element.duration, " expected at start time", element.startTime));
+                    break;
+                //Extra note found
+                case 3:
+                    feedback.push("Extra note with Midi value ".concat(element.noteMidi, " and duration ", 
+                            element.duration, " found at start time ", element.startTime));
+                    break;
+            }
+        }
+
+        console.log(this.music);
+        console.log(otherSong.music);
+
         //TODO: Maybe give feedback in terms of start time, not index
         const feedback = [];
         
@@ -110,21 +138,18 @@ export default class song{
         var otherSongEnded = false;
 
         //TODO: Check ending condition
-        while(!curSongEnded || !otherSongEnded){
-            console.log("Current Song Time: ", curSongTime);
-            console.log("Other Song Time: ", otherSongTime);
+        while(!curSongEnded && !otherSongEnded){
             if(curSongTime == otherSongTime){
                 //Check if elements are not the same type
                 if(this.music[curSongIndex].type != otherSong.music[otherSongIndex].type){
-                    feedback.push("1 ", otherSong.music[otherSongIndex].type, " expected at position ", curSongIndex);
+                    pushFeedback(feedback, otherSong.music[otherSongIndex], 1);
                 }
                 //If both elements are notes
                 else if(this.music[curSongIndex].type == "note"){
                     //Compare the notes
                     if(!compareNotes(this.music[curSongIndex], otherSong.music[otherSongIndex])){
                         //If the notes are not equivalent
-                        feedback.push("2 Midi ", otherSong.music[otherSongIndex].noteMidi, " and duration ", 
-                            otherSong.music[otherSongIndex].duration, " expected at position ", curSongIndex);
+                        pushFeedback(feedback, otherSong.music[otherSongIndex], 2);
                     }
                 }
                 //If both elements are chords
@@ -140,18 +165,17 @@ export default class song{
                             }
                         }
                         if(!isFound){
-                            feedback.push("3 Expected note with Midi value ", note.noteMidi, 
-                                " and duration ", note.duration, " expected at position ", curSongIndex);
+                            pushFeedback(feedback, note, 2);
                         }
                     });
                     chordCopy.forEach(note => {
                         console.log(note);
-                        feedback.push("4 Extra note with Midi value ", note.noteMidi, " and duration ", 
-                            note.duration, " found at position ", curSongIndex);
+                        pushFeedback(feedback, note, 3);
                     });
                 }
+
                 //Increase indices of both songs
-                if(this.music[curSongIndex + 1] != null){
+                if(this.music[curSongIndex + 1] != undefined){
                     curSongIndex++;
                     curSongTime = this.music[curSongIndex].startTime;
                 }
@@ -159,7 +183,7 @@ export default class song{
                     curSongEnded = true;
                 }
                 
-                if(otherSong.music[otherSongIndex + 1] != null){
+                if(otherSong.music[otherSongIndex + 1] != undefined){
                     otherSongIndex++;
                     otherSongTime = this.music[otherSongIndex].startTime;
                 }
@@ -169,17 +193,15 @@ export default class song{
             }
             else if(otherSongTime < curSongTime){
                 if(otherSongTime.music[otherSongIndex].type == "note"){
-                    feedback.push("5 Expected note with Midi value ", otherSongTime.music[otherSongIndex].noteMidi, 
-                        " and duration ", otherSongTime.music[otherSongIndex].duration, " at position ", otherSongIndex);
+                    pushFeedback(feedback, otherSong.music[otherSongIndex], 2);
                 }
                 else if(otherSongTime.music[otherSongIndex].type == "chord"){
                     otherSongTime.music[otherSongIndex].notes.forEach(note => {
-                        feedback.push("6 Expected note with Midi value ", note.noteMidi, " and duration ", 
-                            note.duration, " found at position ", otherSongIndex);
+                        pushFeedback(feedback, note, 2);
                     });
                 }
                 //Increase index of only otherSong
-                if(this.music[otherSongIndex + 1] != null){
+                if(this.music[otherSongIndex + 1] != undefined){
                     otherSongIndex++;
                     otherSongTime = this.music[otherSongIndex].startTime;
                 }
@@ -189,14 +211,12 @@ export default class song{
             }
             else if(otherSongTime > curSongTime){
                 if(this.music[otherSongIndex].type == "note"){
-                    feedback.push("7 Extra note with Midi value ", otherSongTime.music[otherSongIndex].noteMidi, 
-                        " and duration ", otherSongTime.music[otherSongIndex].duration, " found at position ", otherSongIndex);
+                    pushFeedback(feedback, otherSong.music[otherSongIndex], 3);
                 }
                 else if(this.music[otherSongIndex].type == "chord"){
                     this.music[otherSongIndex].notes.forEach(note => {
                         //console.log("Note: ", note);
-                        feedback.push("8 Extra note with Midi value ", note.noteMidi, " and duration ", 
-                            note.duration, " found at position ", otherSongIndex);
+                        pushFeedback(feedback, note, 2);
                     });
                 }
                 //Increase index of only this song
@@ -209,11 +229,49 @@ export default class song{
                 }
             }
         }
-        /*
-        if(feedback.length == 0){
-            feedback.push("No Errors!")
+
+        while(!otherSongEnded){
+            //If element is a note
+            if(otherSong.music[otherSongIndex].type == "note"){
+                pushFeedback(feedback, otherSong.music[otherSongIndex], 2);
+            }
+            //If element is a chord
+            else if(otherSong.music[otherSongIndex].type == "chord"){
+                otherSong.music[otherSongIndex].notes.forEach(note => {
+                    pushFeedback(feedback, note, 2);
+                });
+            }
+            
+            //Iterate
+            if(otherSong.music[otherSongIndex + 1] != undefined){
+                otherSongIndex++;
+                otherSongTime = this.music[otherSongIndex].startTime;
+            }
+            else{
+                otherSongEnded = true;
+            }
         }
-        */
+        while(!curSongEnded){
+            //If element is a note
+            if(this.music[curSongIndex].type == "note"){
+                pushFeedback(feedback, this.music[curSongIndex], 3);
+            }
+            //If element is a chord
+            else if(this.music[curSongIndex].type == "chord"){
+                this.music[curSongIndex].notes.forEach(note => {
+                    pushFeedback(feedback, note, 3);
+                });
+            }
+
+            //Iterate
+            if(this.music[curSongIndex + 1] != undefined){
+                curSongIndex++;
+                curSongTime = this.music[curSongIndex].startTime;
+            }
+            else{
+                curSongEnded = true;
+            }
+        }
        return feedback;
     }
 }

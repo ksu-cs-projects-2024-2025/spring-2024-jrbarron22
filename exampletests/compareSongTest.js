@@ -2,8 +2,8 @@ import { unzipSb3 } from '../src/utils/sb3Unzipp.js';
 import Parser from "./parser.js";
 import Song  from "../src/music/song.js";
 
-var sb3File1 = "./sb3Test.sb3";
-var sb3File2 = "./compareSong.sb3";
+var sb3File1 = "./compareSongTest2a.sb3";
+var sb3File2 = "./compareSongTest2b.sb3";
 
 var parser = new Parser();
 
