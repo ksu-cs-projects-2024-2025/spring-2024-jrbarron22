@@ -1,4 +1,4 @@
-export default class chord{
+class chord{
     constructor(startTime, notes){
         this.startTime = startTime;
         this.notes = notes;
@@ -9,3 +9,5 @@ export default class chord{
         this.notes.push(note);
     }
 }
+
+module.exports = chord;

@@ -1,13 +1,14 @@
-import fs from 'fs/promises';
-import { unzipSb3 } from '../src/utils/sb3Unzipp.js';
+const fs = require('fs/promises');
+const unzipSb3 = require('../src/utils/sb3Unzipp.js');
 
-export default class Parser{
+class Parser{
     constructor(){}
 
     async parse(fileName){
         var nodeList = [];
-
+//console.log('parsing', fileName);
         const unzippedSb3 = await unzipSb3(fileName);
+//console.log('parsed');
         var jsonData = await fs.readFile(unzippedSb3, 'utf-8');
         var projectData = JSON.parse(jsonData);
 
@@ -46,3 +47,5 @@ class Node{
         this.fields = fields;
     }
 }
+
+module.exports = Parser;

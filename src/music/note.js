@@ -1,4 +1,4 @@
-export default class note{
+class note{
     constructor(startTime, duration, pitch){
         this.startTime = startTime;
         this.duration = duration;
@@ -7,3 +7,5 @@ export default class note{
         this.isUsed = true;
     }
 }
+
+module.exports = note;

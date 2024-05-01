@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 
-export { default } from '../exampletests/parser.js';
-export { default as Song } from './src/music/song.js';
+const parser = require('../exampletests/parser.js');
+const song = require('./src/music/song.js');
+
+module.exports = {parser, song};

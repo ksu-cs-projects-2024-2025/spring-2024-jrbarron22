@@ -1,8 +1,7 @@
-import  Note  from "./note.js";
-import  Rest  from "./rest.js";
-import  Chord  from "./chord.js";
+const Note = require("./note.js");
+const Chord = require("./chord.js");
 
-export default class song{
+class song{
     constructor(nodeList){
         this.processBranch = this.processBranch.bind(this);
         this.compareSong = this.compareSong.bind(this);
@@ -105,7 +104,7 @@ export default class song{
         //type is which type of feedback to push
         ///
         function pushFeedback(feedback, element, type){
-            console.log(element);
+            //console.log(element);
             switch(type){
                 //Wrong element type
                 case 1:
@@ -124,8 +123,8 @@ export default class song{
             }
         }
 
-        console.log(this.music);
-        console.log(otherSong.music);
+        //console.log(this.music);
+        //console.log(otherSong.music);
 
         //TODO: Maybe give feedback in terms of start time, not index
         const feedback = [];
@@ -169,7 +168,7 @@ export default class song{
                         }
                     });
                     chordCopy.forEach(note => {
-                        console.log(note);
+                        //console.log(note);
                         pushFeedback(feedback, note, 3);
                     });
                 }
@@ -275,3 +274,5 @@ export default class song{
        return feedback;
     }
 }
+
+module.exports = song;
