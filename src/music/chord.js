@@ -6,6 +6,6 @@ export default class chord{
     }
 
     addNote(note){
-        this.notes.append(note);
+        this.notes.push(note);
     }
 }

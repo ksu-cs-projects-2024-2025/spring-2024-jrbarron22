@@ -4,7 +4,7 @@ import fs from 'fs-extra';
 export async function unzipSb3(filePath, outputDir = './unzippedSb3') {
     // Load the .sb3 file
     const data = await fs.readFile(filePath);
-    console.log(filePath);
+    //console.log(filePath);
 
     // Load the .sb3 content with JSZip
     const zip = new JSZip();
@@ -23,7 +23,7 @@ export async function unzipSb3(filePath, outputDir = './unzippedSb3') {
         }
     }
 
-    console.log("Unzipping completed!");
+    //console.log("Unzipping completed!");
     return `${outputDir}/project.json`; // return the path of the unzipped project.json file
 }
 
@@ -45,6 +45,6 @@ export async function unzipSb3Data(data, outputDir = './unzippedSb3') {
         }
     }
 
-    console.log("Unzipping completed!");
+    //console.log("Unzipping completed!");
     return `${outputDir}/project.json`; // return the path of the unzipped project.json file
 }
