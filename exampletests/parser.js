@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import { unzipSb3 } from '../src/utils/sb3Unzipp.js';
 
 export default class Parser{
     constructor(){}
@@ -6,7 +7,8 @@ export default class Parser{
     async parse(fileName){
         var nodeList = [];
 
-        var jsonData = await fs.readFile(fileName, 'utf-8');
+        const unzippedSb3 = await unzipSb3(fileName);
+        var jsonData = await fs.readFile(unzippedSb3, 'utf-8');
         var projectData = JSON.parse(jsonData);
 
         //console.log(projectData);

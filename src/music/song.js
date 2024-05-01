@@ -114,7 +114,7 @@ export default class song{
                 //Incorrect note data
                 case 2:
                     feedback.push("Expected note with Midi value: ".concat(element.noteMidi, " and duration: ", 
-                            element.duration, " expected at start time", element.startTime));
+                            element.duration, " expected at start time ", element.startTime));
                     break;
                 //Extra note found
                 case 3:
