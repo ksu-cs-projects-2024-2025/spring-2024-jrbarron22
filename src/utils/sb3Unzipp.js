@@ -2,12 +2,13 @@
 const JSZip = require('jszip');
 const fs = require('fs-extra');
 var AdmZip = require("adm-zip");
+const extract = require('extract-zip');
 
 async function unzipSb3(filePath, outputDir = './unzippedSb3') {
     // Load the .sb3 file
     //const data = await fs.readFile(filePath);
     //console.log(filePath);
-
+    
     // Load the .sb3 content with JSZip
     //const zip = new JSZip();
     const zip = new AdmZip(filePath);

@@ -7,6 +7,7 @@ class Parser{
     async parse(fileName){
         var nodeList = [];
 //console.log('parsing', fileName);
+        //console.log(fileName);
         const unzippedSb3 = await unzipSb3(fileName);
 //console.log('parsed');
         var jsonData = await fs.readFile(unzippedSb3, 'utf-8');
