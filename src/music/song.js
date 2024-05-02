@@ -124,6 +124,7 @@ class song{
         }
 
         //console.log(this.music);
+        //console.log(this.music.length);
         //console.log(otherSong.music);
 
         //TODO: Maybe give feedback in terms of start time, not index
@@ -193,16 +194,17 @@ class song{
                 }
             }
             else if(otherSongTime < curSongTime){
-                if(otherSongTime.music[otherSongIndex].type == "note"){
+                //console.log(otherSong.music[otherSongIndex].type);
+                if(otherSong.music[otherSongIndex].type == "note"){
                     pushFeedback(feedback, otherSong.music[otherSongIndex], 2);
                 }
-                else if(otherSongTime.music[otherSongIndex].type == "chord"){
-                    otherSongTime.music[otherSongIndex].notes.forEach(note => {
+                else if(otherSong.music[otherSongIndex].type == "chord"){
+                    otherSong.music[otherSongIndex].notes.forEach(note => {
                         pushFeedback(feedback, note, 2);
                     });
                 }
                 //Increase index of only otherSong
-                if(this.music[otherSongIndex + 1] != undefined){
+                if(otherSong.music[otherSongIndex + 1] != undefined){
                     otherSongIndex++;
                     otherSongTime = otherSong.music[otherSongIndex].startTime;
                 }
@@ -211,13 +213,14 @@ class song{
                 }
             }
             else if(otherSongTime > curSongTime){
+                //console.log(curSongTime);
                 if(this.music[otherSongIndex].type == "note"){
-                    pushFeedback(feedback, otherSong.music[otherSongIndex], 3);
+                    pushFeedback(feedback, this.music[curSongIndex], 3);
                 }
-                else if(this.music[otherSongIndex].type == "chord"){
-                    this.music[otherSongIndex].notes.forEach(note => {
+                else if(this.music[curSongIndex].type == "chord"){
+                    this.music[curSongIndex].notes.forEach(note => {
                         //console.log("Note: ", note);
-                        pushFeedback(feedback, note, 2);
+                        pushFeedback(feedback, note, 3);
                     });
                 }
                 //Increase index of only this song

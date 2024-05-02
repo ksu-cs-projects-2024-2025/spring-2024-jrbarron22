@@ -5,12 +5,12 @@ const Song = require("../src/music/song.js");
 const fs = require('fs');
 
 const ojSong = require('./ojSong.json');
-var sb3File1 = "./4-music.sb3";
-//var sb3File2 = "./oj.sb3";
+//var sb3File1 = "./4-music.sb3";
+var sb3File1 = "./completeOJ.sb3";
 
 async function process(){
     var parser = new Parser();
-    //const unzippedFilePath1 = await unzipSb3(sb3File1);
+    
     var nodeList1 = await parser.parse(sb3File1);
     var song1 = new Song(nodeList1);
 
