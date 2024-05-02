@@ -276,6 +276,9 @@ class song{
                 curSongEnded = true;
             }
         }
+        if(feedback.length == 0){
+            feedback.push("No Errors! Great Job!");
+        }
        return feedback;
     }
 }
