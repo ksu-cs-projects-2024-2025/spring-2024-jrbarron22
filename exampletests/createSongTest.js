@@ -15,7 +15,7 @@ async function process(){
 
     console.log(song.music);
 
-    fs.writeFileSync("ojSong.json", JSON.stringify(song.music), {encoding:"utf-8"});
+    fs.writeFileSync("ojSong.json", JSON.stringify(song), {encoding:"utf-8"});
 }
 
 process();

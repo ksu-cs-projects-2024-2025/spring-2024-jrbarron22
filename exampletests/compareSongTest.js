@@ -3,8 +3,8 @@
 const Parser = require("./parser.js");
 const Song = require("../src/music/song.js");
 
-var sb3File1 = "./compareSongTest2aFixed.sb3";
-var sb3File2 = "./compareSongTest2b.sb3";
+var sb3File1 = "./4-music.sb3";
+var sb3File2 = "./oj.sb3";
 
 async function process(){
     var parser = new Parser();

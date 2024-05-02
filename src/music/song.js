@@ -139,12 +139,14 @@ class song{
         //TODO: Check ending condition
         while(!curSongEnded && !otherSongEnded){
             if(curSongTime == otherSongTime){
+                console.log("Same Song Time");
                 //Check if elements are not the same type
                 if(this.music[curSongIndex].type != otherSong.music[otherSongIndex].type){
                     pushFeedback(feedback, otherSong.music[otherSongIndex], 1);
                 }
                 //If both elements are notes
                 else if(this.music[curSongIndex].type == "note"){
+                    console.log("Both Notes");
                     //Compare the notes
                     if(!compareNotes(this.music[curSongIndex], otherSong.music[otherSongIndex])){
                         //If the notes are not equivalent
@@ -184,7 +186,7 @@ class song{
                 
                 if(otherSong.music[otherSongIndex + 1] != undefined){
                     otherSongIndex++;
-                    otherSongTime = this.music[otherSongIndex].startTime;
+                    otherSongTime = otherSong.music[otherSongIndex].startTime;
                 }
                 else{
                     otherSongEnded = true;
@@ -202,7 +204,7 @@ class song{
                 //Increase index of only otherSong
                 if(this.music[otherSongIndex + 1] != undefined){
                     otherSongIndex++;
-                    otherSongTime = this.music[otherSongIndex].startTime;
+                    otherSongTime = otherSong.music[otherSongIndex].startTime;
                 }
                 else{
                     otherSongEnded = true;
@@ -244,7 +246,7 @@ class song{
             //Iterate
             if(otherSong.music[otherSongIndex + 1] != undefined){
                 otherSongIndex++;
-                otherSongTime = this.music[otherSongIndex].startTime;
+                otherSongTime = otherSong.music[otherSongIndex].startTime;
             }
             else{
                 otherSongEnded = true;
